@@ -30,6 +30,7 @@ try {
 
 //调用文件
     $controllerFile = "controller/{$entity}.php";
+    look($controllerFile);
     if(!file_exists($controllerFile)){
         throw new LcError("调用文件不存在");
     }
