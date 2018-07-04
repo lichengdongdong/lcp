@@ -1,38 +1,49 @@
 <template>
-  <div class="page-field">
-    <div class="page-title">Field</div>
-    <div class="page-part">
-      <mt-field label="用户名" placeholder="请输入用户名" :attr="{ maxlength: 10 }"></mt-field>
-      <mt-field label="邮箱" placeholder="请输入邮箱" type="email"></mt-field>
-      <mt-field label="密码" placeholder="请输入密码" type="password"></mt-field>
-      <mt-field label="手机号" placeholder="请输入手机号" type="tel"></mt-field>
-      <mt-field label="网站" placeholder="请输入网址" type="url"></mt-field>
-      <mt-field label="数字" placeholder="请输入数字" type="number"></mt-field>
-      <mt-field label="生日" placeholder="请输入生日" type="date"></mt-field>
-      <mt-field label="自我介绍" placeholder="自我介绍" type="textarea" rows="4"></mt-field>
-    </div>
+  <div class="page-tabbar">
 
-    <div class="page-part">
-      <mt-field placeholder="登录邮箱" type="email"></mt-field>
-      <mt-field placeholder="密码" type="password"></mt-field>
-    </div>
+    <mt-header title="标题过长会隐藏后面的内容啊哈哈哈哈">
+      <router-link to="/" slot="left">
+        <mt-button icon="back">返回</mt-button>
+      </router-link>
+      <mt-button icon="more" slot="right"></mt-button>
+    </mt-header>
 
-    <div class="page-part">
-      <mt-field label="邮箱" placeholder="成功状态" state="success"></mt-field>
-      <mt-field label="邮箱" placeholder="失败状态" state="error"></mt-field>
-      <mt-field label="邮箱" placeholder="警告状态" state="warning"></mt-field>
-    </div>
-
-    <div class="page-part">
-      <mt-field label="验证码" placeholder="输入验证码">
-        
-      </mt-field>
-    </div> 
+    <mt-tabbar v-model="selected" fixed>
+      <mt-tab-item id="外卖">
+        <img slot="icon" src="../assets/100x100.png"> 外卖
+      </mt-tab-item>
+      <mt-tab-item id="订单">
+        <img slot="icon" src="../assets/100x100.png"> 订单
+      </mt-tab-item>
+      <mt-tab-item id="发现">
+        <img slot="icon" src="../assets/100x100.png"> 发现
+      </mt-tab-item>
+      <mt-tab-item id="我的">
+        <img slot="icon" src="../assets/100x100.png"> 我的
+      </mt-tab-item>
+    </mt-tabbar>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'page-field'
+  name: "page-tabbar",
+  data() {
+    return {
+      selected: "外卖"
+    };
+  }
 };
 </script>
+
+<style>
+.page-tabbar {
+  overflow: hidden;
+  height: 100vh;
+}
+.page-wrap {
+  overflow: auto;
+  height: 100%;
+  padding-bottom: 100px;
+}
+</style>
