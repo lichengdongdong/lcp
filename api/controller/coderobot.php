@@ -171,7 +171,7 @@ WHERE table_name = '{$_REQUEST['table']}' and table_schema ='" . $_REQUEST['db']
 
 function coderobot_showtype($type, $typedesc)
 {
-    $showtype = "showtype";
+    $showtype = "text";
     switch ($type) {
         case 'text':
             $showtype = "textarea";
@@ -182,8 +182,6 @@ function coderobot_showtype($type, $typedesc)
         case 'tinyint':
             $showtype = "select";
             break;
-        case 'varchar':
-            $showtype = "text";
         default:
             # code...
             break;
