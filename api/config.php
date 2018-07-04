@@ -1,9 +1,12 @@
-<?
-/****************/
+<?php
 
-//database set
-define ( 'DATABASE_HOST', '127.0.0.1' ); 
-define ( 'DATABASE_USER', 'root' ); 
-define ( 'DATABASE_PASSWORD', '123456' ); 
-define ( 'DATABASE_DSN', '' ); 
 
+ define('DATABASE_HOST', 'ywriyorsfhcj.rds.sae.sina.com.cn:13089'); // localhost
+
+
+
+
+//
+define('DATABASE_USER', 'lcpapp'); // root
+define('DATABASE_PASSWORD', 'lcpapp'); // yuanqiaoyan
+define('DATABASE_DSN', 'lcpapp'); // dds

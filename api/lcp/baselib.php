@@ -328,12 +328,16 @@ class Module {
 		
 		//
 		foreach ( $this as $key => $value ) {
+			look($key);
+
 			if (gettype ( $o [$key] ) == 'string') {
 				$o [$key] = trim ( $o [$key] );
 			}
 			$this->$key = ($o [$key]);
 			//	echo $key.":".$value;
 		}
+
+		look($this);
 	
 	}
 	/**

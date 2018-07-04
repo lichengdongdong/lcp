@@ -1,4 +1,4 @@
-<?
+<?php
 class  LcMessage{
 
 }
@@ -33,17 +33,12 @@ class LcSuccess extends LcMessage{
     public $message="";
 
     /**/
-    function  construct($message){
+    function  __construct($message){
     	$this->message=$message;
     }
 
     /**/
     function show(){
-
-    	//
-        if($GLOBALS['look']!=''){
-        	$this->look=$GLOBALS['look'];
-        }
         
     	echo json_encode($this,true);
     }

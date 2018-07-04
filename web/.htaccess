@@ -1,0 +1,5 @@
+Options +FollowSymlinks
+RewriteEngine on
+
+# 重写规则
+RewriteRule ^about-([a-z0-9]+)$   about.php?module=$1 [nc,qsa]

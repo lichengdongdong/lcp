@@ -100,7 +100,6 @@ function site_get_array($sql, $keyid = '', $getfield = '', $cachetime = 0) {
 	} else {
 		$stmt =$nowdb->query($sql);
 		$result  = $stmt->fetchAll();
-		look($result);
 		$cache = 0;
 	}
 	

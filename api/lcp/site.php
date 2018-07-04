@@ -1,10 +1,13 @@
-<?
+<?php
 //
 error_reporting ( E_ALL ^ E_NOTICE ^ E_WARNING ^ E_DEPRECATED );
 header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 header('Access-Control-Allow-Methods: GET, POST, PUT,DELETE');
 header("Access-Control-Allow-Headers:content-type");
+
+
+ini_set('date.timezone','Asia/Shanghai');
 
 
 include "lib.php";
@@ -16,7 +19,7 @@ include "baselib.php";
 
 function look($var){
    if($_GET['debug']==1){
-      echo "<pre>".print_r($var)."</pre>";
+      echo "<pre>".print_r($var)."</pre>"."\n";
    }
    else{
 	  $GLOBALS['look'] .= (var_export($var,true)."\n");
