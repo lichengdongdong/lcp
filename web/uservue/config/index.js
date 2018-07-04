@@ -49,7 +49,7 @@ module.exports = {
      * Source Maps
      */
 
-    productionSourceMap: false,
+    productionSourceMap: true,
     // https://webpack.js.org/configuration/devtool/#production
     devtool: '#source-map',
 
@@ -67,5 +67,3 @@ module.exports = {
     bundleAnalyzerReport: process.env.npm_config_report
   }
 }
-
-

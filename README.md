@@ -7,3 +7,5 @@ lcp/web  是网页部分
 lcp/xcx  是小程序部分
 
 所有的项目 都是 一个 lcp,  api是数据源,  web/xcx 是入口
+
+
