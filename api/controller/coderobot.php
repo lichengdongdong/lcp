@@ -149,13 +149,19 @@ WHERE table_name = '{$_REQUEST['table']}' and table_schema ='" . $_REQUEST['db']
 
         $fields = array();
         foreach ($res as $f) {
-            $ff['comment'] = $f['COLUMN_COMMENT'];
             $type = explode("|", $f['DATA_TYPE']);
 
             //
             $ff['type'] = $type[0];
             $ff['showtype'] = coderobot_showtype($type[0], $type[1]);
             $ff['name'] = $f['COLUMN_NAME'];
+            $ff['comment'] = $f['COLUMN_COMMENT'];
+
+            //
+            if ($ff['comment'] == '') {
+                $f['comment'] = $f['COLUMN_NAME'];
+            }
+
             $ff['required'] = "0";
             $fields[] = $ff;
         }
