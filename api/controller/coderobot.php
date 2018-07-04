@@ -5,7 +5,6 @@
 class CoderobotController
 {
 
-
     public function getcode()
     {
         $tpl_id = intval($_GET['tpl_id']);
@@ -18,9 +17,7 @@ class CoderobotController
         $crCodeTpl = CRCodeTpl::getById($tpl_id);
         $crCodeData = CRCodeData::getById($data_id);
 
-
         $data = $crCodeData->getData();
-
 
         $tpl = $crCodeTpl->tplcontent;
         //$tpl='xx{$data}dad';
@@ -62,16 +59,13 @@ class CoderobotController
         $s->crCodeTpl = $crCodeTpl;
         $s->show();
 
-
     }
 
     public function tplsave()
     {
 
-
         $id = intval($_REQUEST['id']);
         $crCodeTpl = ($id == 0) ? new CRCodeTpl() : CRCodeTpl::getById($id);
-
 
         //
         $crCodeTpl->update($_POST);
@@ -83,7 +77,6 @@ class CoderobotController
         $s->show();
 
     }
-
 
     /**
      */
@@ -123,17 +116,14 @@ class CoderobotController
 
     }
 
-
     public function getdbfields()
     {
-
 
         try {
             $dsn = "mysql:host=" . $_REQUEST['host'] . ";dbname=" . $_REQUEST['db'];
             $array = array(PDO::MYSQL_ATTR_INIT_COMMAND => "set names utf8");
             $pdo = new PDO($dsn, $_REQUEST['username'], $_REQUEST['password'], $array);
             $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-
 
             //
             $sql = "SELECT COLUMN_NAME, DATA_TYPE, COLUMN_COMMENT FROM INFORMATION_SCHEMA.COLUMNS
@@ -160,12 +150,16 @@ WHERE table_name = '{$_REQUEST['table']}' and table_schema ='" . $_REQUEST['db']
         $fields = array();
         foreach ($res as $f) {
             $ff['comment'] = $f['COLUMN_COMMENT'];
-            $ff['type'] = $f['DATA_TYPE'];
+            $type = explode("|", $f['DATA_TYPE']);
+
+            //
+            $ff['type'] = $type[0];
+            $ff['showtype'] = coderobot_showtype($type[0], $type[1]);
             $ff['name'] = $f['COLUMN_NAME'];
+            $ff['required'] = "0";
             $fields[] = $ff;
         }
         $return->fields = $fields;
-
 
         $s = new LcSuccess("ok");
         $s->result = $return;
@@ -173,4 +167,26 @@ WHERE table_name = '{$_REQUEST['table']}' and table_schema ='" . $_REQUEST['db']
 
     }
 
+}
+
+function coderobot_showtype($type, $typedesc)
+{
+    $showtype = "showtype";
+    switch ($type) {
+        case 'text':
+            $showtype = "textarea";
+            break;
+        case 'date':
+            $showtype = "date";
+            break;
+        case 'tinyint':
+            $showtype = "select";
+            break;
+        case 'varchar':
+            $showtype = "text";
+        default:
+            # code...
+            break;
+    }
+    return $showtype;
 }
