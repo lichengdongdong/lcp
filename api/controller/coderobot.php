@@ -151,6 +151,14 @@ WHERE table_name = '{$_REQUEST['table']}' and table_schema ='" . $_REQUEST['db']
         foreach ($res as $f) {
             $type = explode("|", $f['DATA_TYPE']);
 
+            //是否必填
+            $ff['required'] = "0";
+            if (preg_match("/\*/", $f['COLUMN_COMMENT'])) {
+                $ff['required'] = "1";
+            }
+//
+            $f['COLUMN_COMMENT'] = str_replace("*", "", $f['COLUMN_COMMENT']);
+
             //
             $ff['type'] = $type[0];
             $ff['showtype'] = coderobot_showtype($type[0], $type[1]);
@@ -162,7 +170,6 @@ WHERE table_name = '{$_REQUEST['table']}' and table_schema ='" . $_REQUEST['db']
                 $f['comment'] = $f['COLUMN_NAME'];
             }
 
-            $ff['required'] = "0";
             $fields[] = $ff;
         }
         $return->fields = $fields;
