@@ -28,7 +28,7 @@ class CoderobotController
         $smarty->assign("data", $data);
         $code = $smarty->fetch("string:" . $tpl);
 
-        $code=str_replace(array("{ $"),array("{\$"),$code);
+        $code=str_replace(array("{ \$"),array("{\$"),$code);
 
         //
         $s = new LcSuccess("ok");
