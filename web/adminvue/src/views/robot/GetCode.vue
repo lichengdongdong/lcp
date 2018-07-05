@@ -313,7 +313,7 @@ export default {
 <style>
 .code textarea {
   width: 100%;
-  height: 400px;
+  height: 800px;
 }
 .el-form-item__content {
   line-height: 14px;
