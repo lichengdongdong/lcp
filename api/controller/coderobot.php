@@ -25,6 +25,7 @@ class CoderobotController
         //
         require 'lcp/smarty/Smarty.class.php';
         $smarty = new Smarty;
+        //$smarty->
         $smarty->assign("data", $data);
         $code = $smarty->fetch("string:" . $tpl);
 
