@@ -1,4 +1,5 @@
 
 export default {
-    domain:"lcp"
+    domain: "lcpapp.applinzi.com"
+    //domain: "lcp"
 }
