@@ -77,8 +77,8 @@ class UserController
      */
     public function login()
     {
-        $username = trim($_POST['username']);
-        $password = trim($_POST['password']);
+        $username = trim($_REQUEST['username']);
+        $password = trim($_REQUEST['password']);
 
         if ($username == '' or $password == '') {
             throw new LcError("用户名和密码不能为空");
